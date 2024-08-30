@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { Component } from "react";
 import Count from "./Count";
 
-export default function App() {
-  const [count, setCount] = useState(0);
+export default class App extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div>
-      <Count value={count} />
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => setCount(count - 1)}>-</button>
-    </div>
-  );
+    this.state = {
+      count: 0,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <Count value={this.state.count} />
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          +
+        </button>
+        <button onClick={() => this.setState({ count: this.state.count - 1 })}>
+          -
+        </button>
+      </div>
+    );
+  }
 }
